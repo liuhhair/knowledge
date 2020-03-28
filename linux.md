@@ -95,3 +95,16 @@
 
 ## 重启应用
 * sudo /home/q/tools/bin/restart_tomcat.sh /home/q/www/xxxx
+
+## 定时任务
+* 命令: service crond status 确定服务器是否开启定时任务计划服务
+* 命令: service crond start 开启服务
+* 命令: service crond stop 关闭服务
+* 命令: service crond restart 重启服务
+* 命令: service crond reload 重新载入配置
+* 命令: crontab -e  编辑某个用户的cron服务
+* 命令: crontab -l 列出某个用户cron服务的详细内容
+## crontab格式说明
+*格式为 :* * * * *
+* minute| hour |day of mouth |month of year|day  of week
+* 示例:5 * * * * Command   每小时的第5分钟执行一次命令
