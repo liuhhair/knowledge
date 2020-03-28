@@ -1,0 +1,85 @@
+1、字符串反转
+示例 1：
+输入：["h","e","l","l","o"]
+输出：["o","l","l","e","h"]
+
+public static void reverseString(char[] s) {
+    int left = 0, right = s.length - 1;
+     if(right<2 || s == null ){
+         return;
+     }
+     while (left < right) {
+        char c = s[left];
+        s[left] = s[right];
+        s[right] = c;
+        left++ ;
+        right--;    
+     }
+}
+
+2、统计位数为偶数的数字
+示例 1：
+输入：nums = [12,345,2,6,7896]
+输出：2
+解释：
+12 是 2 位数字（位数为偶数） 
+345 是 3 位数字（位数为奇数）  
+2 是 1 位数字（位数为奇数） 
+6 是 1 位数字 位数为奇数） 
+7896 是 4 位数字（位数为偶数）  
+因此只有 12 和 7896 是位数为偶数的数字
+
+public int findNumbers(int[] nums) {
+        int res=0;
+        for(int i:nums){
+            if(String.valueOf(i).length()%2==0){
+                res++;
+            }
+        }
+
+        return res;
+    }
+    3、统计字符串中字符出现的个数
+    public static void main(String[] args) {
+ 
+        //1,定义一个需要被统计字符的字符串
+ 
+        String s = "aaaabbbbbccccccccccccc";
+ 
+        //2,将字符串转换为字符数组
+ 
+        char[] arr = s.toCharArray();
+ 
+        //3,定义双列集合,存储字符串中字符以及字符出现的次数
+ 
+        HashMap<Character, Integer> hm = new HashMap<>();
+ 
+        //4,遍历字符数组获取每一个字符,并将字符存储在双列集合中
+ 
+        for(char c: arr) {
+ 
+            //5,存储过程中要做判断,如果集合中不包含这个键,就将该字符当作键,值为1存储,如果集合中包含这个键,就将值加1存储
+ 
+            /*if(!hm.containsKey(c)) {            //如果不包含这个键
+                hm.put(c, 1);
+            }else {
+                hm.put(c, hm.get(c) + 1);
+            }*/
+ 
+            hm.put(c, !hm.containsKey(c) ? 1 : hm.get(c) + 1);
+ 
+        }
+ 
+        //6,打印双列集合获取字符出现的次数 
+        
+        for (Character key : hm.keySet()) {                //hm.keySet()代表所有键的集合
+ 
+            System.out.println(key + "=" + hm.get(key));//hm.get(key)根据键获取值
+ 
+        }
+ 
+    }
+
+
+    
+
