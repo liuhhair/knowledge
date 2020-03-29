@@ -1,0 +1,47 @@
+1、已知学生id和学生科目以及学生成绩如何求每个学生的总分
+SELECT s.id, s.name, 
+max(case when g.kemu='语文' then score else 0 end) as 语文,
+max(case when g.kemu='数学' then score else 0 end) as 数学,
+max(case when g.kemu='英语' then score else 0 end) as 英语,
+sum(score) as 总分,
+avg(score) as 平均分
+from student s LEFT JOIN grade g ON  s.id = g.s_id GROUP BY s.id
+
+2、排序1：编写一个 SQL 查询来实现分数排名。如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。
+select 
+    a.Score as score , 
+    (select count(distinct b.Score) from Scores b where b.Score >=a.Score) as rank
+from Scores a order by Score DESC;
+
+排序2：Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。
+SELECT d.Name `Department`, e.Name `Employee`, e.Salary `Salary`
+FROM Department d,
+     Employee e
+WHERE d.Id = e.DepartmentId
+  AND (e.DepartmentId, e.Salary)
+    IN (SELECT e.DepartmentId, MAX(e.Salary)
+        FROM Employee e
+        GROUP BY e.DepartmentId);
+
+3、去重：编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。
+delete from Person
+where Id not in(select Id from (
+select min(Id) Id,Email
+from Person
+group by Email)t)
+
+4、有一个courses 表 ，有: student (学生) 和 class (课程)。请列出所有超过或等于5名学生的课。
+SELECT
+    class
+FROM
+    courses
+GROUP BY class
+HAVING COUNT(DISTINCT student) >= 5
+
+5、某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。
+select customers.name as 'Customers'
+from customers
+where customers.id not in
+(
+    select customerid from orders
+);
