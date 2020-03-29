@@ -62,7 +62,8 @@
 * 例如：% du -a
 * % du -sh /etc 只显示该目录的总合
 * % du /etc | sort -nr | more 统计结果用sort 指令进行排序， sort 的参数 -nr 表示要以数字排序法进行反向排序。
-* sudo du -h --max-depth=1
+* sudo du -h --max-depth=1 查看各文件夹大小
+* du -h --max-depth=1 /path  代码如下：  其中 /path表示路径
 
 ## 显示当前目录下的文件详情
 * 命令：ll
