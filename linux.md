@@ -88,6 +88,10 @@
 
 ## 修改机器default的jdk版本
 * 先查看机器default的jdk版本：cd /home/q/java    ls -ahl
+* 命令：ls -ahl
+* a 显示隐藏的文件
+* l 显示详细列表模式
+* h 大小显示便于查看（例如G，K，M）
 * 删除default：sudo rm -f default
 * 创建default软连：sudo ln -s jdk1.7.0_45 default ；ln此处为一个链接
 
