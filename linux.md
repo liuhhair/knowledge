@@ -8,8 +8,8 @@
 * -ef，以全格式显示进程所有信息，包括父进程Pid，创建人，创建时间，进程号。等等
 * -aux 显示所有状态
 * 例如：
-* ps -ef | grep java    表示查看所有进程里 CMD 是 java 的进程信息
-* ps -aux | grep java
+* ps -ef | grep java    查看Java进程（ps -ef 是用标准的格式显示进程的）
+* ps aux | grep java    查看Java进程（ps aux 是用BSD的格式来显示，较-ef多一些字段）
 
 ## 删除进程
 * kill 命令用于终止进程
